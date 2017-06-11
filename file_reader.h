@@ -17,7 +17,6 @@ public:
     ~file_reader();
 private:
     QWidget * m_parent;
-    QFile * file;
 };
 
 #endif // FILE_READER_H

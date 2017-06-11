@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QStandardItemModel>
 
 namespace Ui {
 class MainWindow;
@@ -15,10 +16,11 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
-    void set_log(QString text)   {}
+    bool isEmpty()   {return m_isEmpty;}
 
 private:
     Ui::MainWindow *ui;
+    bool m_isEmpty;
 };
 
 #endif // MAINWINDOW_H

@@ -9,7 +9,12 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
     QVector<get_links> links;
     MainWindow w;
-    w.show();
+    int rc = 0;
 
-    return a.exec();
+    if (!w.isEmpty()) {
+        w.show();
+        rc = a.exec();
+    }
+
+    return rc;
 }

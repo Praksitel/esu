@@ -2,6 +2,5 @@
 
 get_links::get_links()
 {
-
 }
 

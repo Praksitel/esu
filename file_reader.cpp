@@ -1,4 +1,5 @@
 #include "file_reader.h"
+#include<QDebug>
 
 file_reader::file_reader(QWidget * parent)
 {
@@ -7,16 +8,16 @@ file_reader::file_reader(QWidget * parent)
 
 QString file_reader::read_file()
 {
-    QString fileName = QFileDialog::getOpenFileName(m_parent, tr("Open File"), QString(),
-            tr("Conf files (*.*);;Text Files (*.txt);;C++ Files (*.cpp *.h)"));
+    QString fileName = QFileDialog::getOpenFileName(m_parent, tr("Откройте файл со списком аплинков"), "\\fido\\etc",
+            tr("Conf files (*.*);;Text Files (*.txt);;Any File (*.*)"));
 
     if (!fileName.isEmpty()) {
-        file = new QFile(fileName);
-        if (!file->open(QIODevice::ReadOnly)) {
-            QMessageBox::critical(m_parent, tr("Error"), tr("Could not open file"));
+        QFile file(fileName);
+        if (!file.open(QIODevice::ReadOnly)) {
+            QMessageBox::critical(m_parent, tr("Error"), tr("Файл не открывается"));
             return QString();
         }
-        QTextStream in(file);
+        QTextStream in(&file);
         return in.readAll();
     } else {
         return QString();
@@ -25,7 +26,7 @@ QString file_reader::read_file()
 
 file_reader::~file_reader()
 {
-    file->close();
-    delete file;
+    qDebug()<<"file_reader::~file_reader() begin";
+    qDebug()<<"file_reader::~file_reader() end";
 }
 

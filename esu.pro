@@ -15,10 +15,12 @@ TEMPLATE = app
 SOURCES += main.cpp\
         mainwindow.cpp \
     file_reader.cpp \
-    get_links.cpp
+    get_links.cpp \
+    link_parser.cpp
 
 HEADERS  += mainwindow.h \
     file_reader.h \
-    get_links.h
+    get_links.h \
+    link_parser.h
 
 FORMS    += mainwindow.ui
